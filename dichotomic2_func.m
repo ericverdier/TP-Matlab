@@ -22,7 +22,7 @@ function [ xFinal, i, err, fail ] = dichotomic2_func( a, b, tol, iterMax, trueVa
     FA=fun(a);
     err = [];
     while i <= iterMax
-        %on se place a 1/3 et 2/3 de deux bornes
+        %on se place a 1/3 et a 2/3 des deux bornes
         c1 = a + (b-a)/3;
         c2 = a + 2*(b-a)/3;
         %et on calcule les images
@@ -30,10 +30,10 @@ function [ xFinal, i, err, fail ] = dichotomic2_func( a, b, tol, iterMax, trueVa
         FC2 = fun(c2);
         
         %Si FA et FC1 ne sont pas du meme signe,
-        %   on met b a c1
+        %   on met b à c1
         %sinon si FC1 et FC2 ne sont pas du meme signe,
-        %   on met a a c1, FA a FC1 et b a c2
-        %sinon on met a a c2 et FA a FC2.
+        %   on met a à c1, FA à FC1 et b à c2
+        %sinon on met a à c2 et FA à FC2.
         if FA*FC1 < 0
             b=c1;
             err = [err,abs(c1-trueValue)];
@@ -60,8 +60,7 @@ function [ xFinal, i, err, fail ] = dichotomic2_func( a, b, tol, iterMax, trueVa
         %on incremente i
         i=i+1;
     end
-    %apres iterMax iterations, on abandonne la recherche et on affiche un
-    %warning
+    %apres iterMax iterations, on abandonne la recherche et on affiche un warning
     fail=1;
     xFinal = (c1+c2) / 2;
 end
